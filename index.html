@@ -112,6 +112,13 @@
         #ruffleContainer {
             width: 100%;
             height: 100%;
+            pointer-events: auto;
+        }
+
+        #ruffleContainer ruffle-player {
+            width: 100%;
+            height: 100%;
+            pointer-events: auto;
         }
 
         .loading {
@@ -209,9 +216,11 @@
             player.load({
                 url: swfPath,
                 parameters: "autoplay=true",
-                allowScriptAccess: true,
+                allowScriptAccess: "always",
                 backgroundColor: "#FFFFFF",
-                wmode: "direct"
+                wmode: "direct",
+                letterbox: "on",
+                quality: "high"
             }).catch(err => {
                 container.innerHTML = `<div class="loading">Error: ${err.message}</div>`;
             });
@@ -238,3 +247,4 @@
     </script>
 </body>
 </html>
+
